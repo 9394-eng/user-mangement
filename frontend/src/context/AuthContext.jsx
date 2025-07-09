@@ -27,7 +27,8 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUserProfile = async () => {
     try {
-      const response = await axios.get('/api/user/profile')
+      const API_URL = import.meta.env.VITE_API_URL;
+      const response = await axios.get(`${API_URL}/api/user/profile`)
       setUser(response.data)
     } catch (error) {
       console.error('Error fetching user profile:', error)
@@ -39,7 +40,8 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (credentials) => {
     try {
-      const response = await axios.post('/api/auth/login', credentials)
+      const API_URL = import.meta.env.VITE_API_URL;
+      const response = await axios.post(`${API_URL}/api/auth/login`, credentials)
       const { token, user } = response.data
       
       localStorage.setItem('token', token)
@@ -58,7 +60,8 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      const response = await axios.post('/api/auth/register', userData)
+      const API_URL = import.meta.env.VITE_API_URL;
+      const response = await axios.post(`${API_URL}/api/auth/register`, userData)
       const { token, user } = response.data
       
       localStorage.setItem('token', token)
@@ -77,7 +80,8 @@ export const AuthProvider = ({ children }) => {
 
   const updateProfile = async (userData) => {
     try {
-      const response = await axios.put('/api/user/profile', userData)
+      const API_URL = import.meta.env.VITE_API_URL;
+      const response = await axios.put(`${API_URL}/api/user/profile`, userData)
       setUser(response.data.user)
       return { success: true, message: response.data.message }
     } catch (error) {
