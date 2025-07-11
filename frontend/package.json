@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "vite build",
-    "postinstall": "chmod +x node_modules/.bin/vite"
+    "build": "vite build"
   },
   "engines": {
     "node": "20.x"
